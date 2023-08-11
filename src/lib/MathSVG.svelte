@@ -6,8 +6,6 @@
 	import { RegisterHTMLHandler } from 'mathjax-full/js/handlers/html';
 	import type { OptionList } from 'mathjax-full/js/util/Options';
 
-	
-
 	export let convertOptions: OptionList = {};
 	// TeX Input
 	export let tex: string;

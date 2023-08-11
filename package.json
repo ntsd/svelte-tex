@@ -1,37 +1,76 @@
 {
 	"name": "svelte-tex",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "svelte-kit sync && svelte-package",
-		"prepublishOnly": "echo 'Did you mean to publish `./package/`, instead of `./`?' && exit 1",
+		"build": "svelte-kit sync && svelte-package -o package",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"test:unit": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write ."
 	},
+	"exports": {
+		"./package.json": "./package.json",
+		".": {
+			"types": "./package/index.d.ts",
+			"svelte": "./package/index.js",
+			"default": "./package/index.js"
+		},
+		"./MathML.svelte": {
+			"types": "./package/MathML.svelte.d.ts",
+			"svelte": "./package/MathML.svelte",
+			"default": "./package/MathML.svelte"
+		},
+		"./MathSVG.svelte": {
+			"types": "./package/MathSVG.svelte.d.ts",
+			"svelte": "./package/MathSVG.svelte",
+			"default": "./package/MathSVG.svelte"
+		}
+	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^1.0.0-next.90",
+		"@sveltejs/adapter-static": "^2.0.3",
 		"@sveltejs/kit": "^1.0.0-next.587",
-		"@sveltejs/package": "^1.0.0-next.6",
+		"@sveltejs/package": "^2.0.0",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
+		"autoprefixer": "^10.4.14",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
+		"postcss": "^8.4.27",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.8.1",
-		"svelte": "^3.54.0",
 		"svelte-check": "^2.9.2",
+		"svelte-highlight": "^7.3.0",
+		"tailwindcss": "^3.3.3",
 		"tslib": "^2.4.1",
 		"typescript": "^4.9.3",
-		"vite": "^4.0.0",
-		"vitest": "^0.25.3"
+		"vite": "^4.0.0"
 	},
 	"type": "module",
 	"dependencies": {
 		"mathjax-full": "^3.2.2",
-		"temml-ts": "^0.10.14-7"
-	}
+		"temml-ts": "^0.10.14-7",
+		"svelte": "^3.54.0"
+	},
+	"files": [
+		"package"
+	],
+	"typesVersions": {
+		">4.0": {
+			"MathML.svelte": [
+				"./package/src/lib/MathML.d.ts"
+			],
+			"MathSVG.svelte": [
+				"./package/src/lib/MathSVG.d.ts"
+			]
+		}
+	},
+	"keywords": [
+		"mathml",
+		"svelte",
+		"tex",
+		"math",
+		"svg"
+	]
 }
