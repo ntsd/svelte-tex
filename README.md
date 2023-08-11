@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/svelte-tex.svg)](https://www.npmjs.com/package/svelte-tex)
 
-Svelte Component to convert [TeX](https://en.wikipedia.org/wiki/TeX) to rendered SVG using [MathJax](https://github.com/mathjax/MathJax) or rendered MathML using [Temml](https://github.com/ronkok/Temml)
+Svelte Component to convert [TeX](https://en.wikipedia.org/wiki/TeX) to rendered SVG using [MathJax](https://github.com/mathjax/MathJax) or rendered MathML using [Temml](https://github.com/ronkok/Temml).
 
 [Try It Online](https://ntsd.github.io/svelte-tex)
 
@@ -21,10 +21,7 @@ Svelte Component to convert [TeX](https://en.wikipedia.org/wiki/TeX) to rendered
 
 ```ts
 <script lang="ts">
-// alternative import
-// import { MathML, MathSVG } from 'svelte-tex';
-  import MathML from 'svelte-tex/mathml';
-  import MathSVG from 'svelte-tex/mathsvg';
+  import { MathML, MathSVG } from 'svelte-tex';
 
   const tex = String.raw`\frac{(n^2+n)(2n+1)}{6}`;
 </script>

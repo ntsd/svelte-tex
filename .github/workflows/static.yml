@@ -29,19 +29,19 @@ jobs:
         with:
           node-version: 16
           cache: "npm"
-          cache-dependency-path: ./page/package-lock.json
+          cache-dependency-path: ./package-lock.json
       - name: Install package
         run: npm install
-        working-directory: ./page
+        working-directory: ./
       - name: Build
-        run: npm run build
-        working-directory: ./page
+        run: npm run build-page
+        working-directory: ./
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: "./page/build"
+          path: "./build"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2

@@ -10,10 +10,7 @@
 
 	const installCode = 'npm install svelte-tex';
 	const exmapleCode = `\<script lang="ts">
-// alternative import
-// import { MathML, MathSVG } from 'svelte-tex';
-  import MathML from 'svelte-tex/mathml';
-  import MathSVG from 'svelte-tex/mathsvg';
+  import { MathML, MathSVG } from 'svelte-tex';
 
   const tex = String.raw\`\\frac{(n^2+n)(2n+1)}{6}\`;
 \<\/script>

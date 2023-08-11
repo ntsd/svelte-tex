@@ -1,14 +1,28 @@
 {
 	"name": "svelte-tex",
-	"version": "0.0.3",
+	"version": "0.0.7",
+	"description": "Svelte Component to convert TeX to rendered SVG using MathJax or rendered MathML using Temml",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "svelte-kit sync && svelte-package -o package",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"format": "prettier --plugin-search-dir . --write .",
+		"build-page": "vite build"
 	},
+	"keywords": [
+		"mathml",
+		"svelte",
+		"tex",
+		"math",
+		"svg"
+	],
+	"type": "module",
+	"files": [
+		"package"
+	],
+	"main": "./package/index.js",
 	"exports": {
 		"./package.json": "./package.json",
 		".": {
@@ -53,15 +67,13 @@
 		"typescript": "^4.9.3",
 		"vite": "^4.0.0"
 	},
-	"type": "module",
 	"dependencies": {
 		"mathjax-full": "^3.2.2",
-		"temml-ts": "^0.10.14-8",
-		"svelte": "^3.54.0"
+		"temml-ts": "^0.10.14-8"
 	},
-	"files": [
-		"package"
-	],
+	"peerDependencies": {
+		"svelte": "^3.x || ^4.x"
+	},
 	"typesVersions": {
 		">4.0": {
 			"MathML.svelte": [
@@ -71,12 +83,5 @@
 				"./package/src/lib/MathSVG.d.ts"
 			]
 		}
-	},
-	"keywords": [
-		"mathml",
-		"svelte",
-		"tex",
-		"math",
-		"svg"
-	]
+	}
 }
