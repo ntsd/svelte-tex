@@ -19,7 +19,7 @@ Svelte Component to convert [TeX](https://en.wikipedia.org/wiki/TeX) to rendered
 
 ## Usage
 
-> `MathML` is more recommended since `MathSVG` bundle size is huge, It will good with prerender mode.
+> **`MathML` is more recommended since `MathSVG` bundle size is not small.**
 
 ### MathML
 

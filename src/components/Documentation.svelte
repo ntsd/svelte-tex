@@ -10,13 +10,24 @@
 
 	const installCode = 'npm install svelte-tex';
 	const exmapleCode = `\<script lang="ts">
-  import { MathML, MathSVG } from 'svelte-tex';
+  import MathML from 'svelte-tex/package/MathML.svelte';
 
   const tex = String.raw\`\\frac{(n^2+n)(2n+1)}{6}\`;
 \<\/script>
 
+<MathML {tex} />
+// or include Temml options
 <MathML {tex} temmlOptions={{}} />
+`;
 
+	const exmapleCode2 = `\<script lang="ts">
+  import MathSVG from 'svelte-tex/package/MathSVG.svelte';
+
+  const tex = String.raw\`\\frac{(n^2+n)(2n+1)}{6}\`;
+\<\/script>
+
+<MathSVG {tex} />
+// or include MathJax options
 // texOptions from https://docs.mathjax.org/en/latest/options/input/tex.html#tex-input-processor-options
 // svgOptions from https://docs.mathjax.org/en/latest/options/output/svg.html#svg-options
 <MathSVG {tex} texOptions={{}} svgOptions={{ fontCache: 'local' }} />
@@ -63,6 +74,14 @@
 
 <p class="opacity-0 transition" class:opacity-100={copied}>copied to clipboard</p>
 
-<h2 class="text-2xl font-bold mb-4">Examples</h2>
+<h2 class="text-2xl font-bold mb-4">Usage</h2>
+
+<p class="" >MathML is more recommended since MathSVG bundle size is not small.</p>
+
+<h3 class="text-2xl font-bold mt-4 mb-2">MathML</h3>
 
 <Highlight class="select-all rounded ring-2" language={typescript} code={exmapleCode} />
+
+<h3 class="text-2xl font-bold mt-4 mb-2">MathSVG</h3>
+
+<Highlight class="select-all rounded ring-2" language={typescript} code={exmapleCode2} />
