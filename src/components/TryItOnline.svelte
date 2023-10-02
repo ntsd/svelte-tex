@@ -12,7 +12,7 @@
 	<textarea
 		class="p-2 scrollable ring resize-none min-w-full"
 		bind:value={tex}
-		placeholder="Generate SDP or paste here..."
+		placeholder="Add LaTeX/TeX here..."
 		rows="3"
 	/>
 </div>
