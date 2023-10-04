@@ -1,6 +1,6 @@
 {
   "name": "svelte-tex",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Svelte Component to convert TeX to rendered SVG using MathJax or rendered MathML using Temml",
   "author": "Jirawat Boonkumnerd <contact@ntsd.dev> (https://ntsd.dev)",
   "license": "MIT",
@@ -65,7 +65,7 @@
   },
   "dependencies": {
     "mathjax-full": "^3.2.2",
-    "temml-ts": "^0.10.14-9"
+    "temml-ts": "^0.10.14-12"
   },
   "peerDependencies": {
     "svelte": "^3.x || ^4.x"
