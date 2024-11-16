@@ -5,16 +5,16 @@
 	let tex = String.raw`\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)`;
 </script>
 
-<h2 class="text-xl font-bold mt-8 mb-4">Try It Online</h2>
+<h2 class="mb-4 mt-8 text-xl font-bold">Try It Online</h2>
 
 <div class="mt-2">
-	<h3 class="font-bold mb-2">TeX</h3>
+	<h3 class="mb-2 font-bold">TeX</h3>
 	<textarea
-		class="p-2 scrollable ring resize-none min-w-full"
+		class="scrollable min-w-full resize-none p-2 ring"
 		bind:value={tex}
 		placeholder="Add LaTeX/TeX here..."
 		rows="3"
-	/>
+	></textarea>
 </div>
 
 <div class="mt-4">

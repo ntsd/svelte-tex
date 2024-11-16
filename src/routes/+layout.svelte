@@ -1,24 +1,23 @@
 <script lang="ts">
-  import "../app.css";
-  import Footer from "../components/Footer.svelte";
-  import Navbar from "../components/Navbar.svelte";
-
-  const pageDescription = "";
+	import '../app.css';
+	import Footer from '../components/Footer.svelte';
+	import Navbar from '../components/Navbar.svelte';
+	import { pageDescription, pageTitle } from '../const.ts';
 </script>
 
 <svelte:head>
-  <title>SDP Compact Example</title>
-  <meta name="description" content={pageDescription} />
-  <meta name="theme-color" content="#fff" />
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="SDP Compact Example" />
-  <meta property="og:description" content={pageDescription} />
+	<title>{pageTitle}</title>
+	<meta name="description" content={pageDescription} />
+	<meta name="theme-color" content="#fff" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={pageDescription} />
 </svelte:head>
 
-<div class="flex flex-col h-screen">
-  <Navbar />
-  <div class="flex-grow container mx-auto justify-items-center">
-    <slot />
-  </div>
-  <Footer />
+<div class="flex h-screen flex-col">
+	<Navbar />
+	<div class="container mx-auto flex-grow justify-items-center">
+		<slot />
+	</div>
+	<Footer />
 </div>

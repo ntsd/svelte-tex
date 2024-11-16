@@ -6,13 +6,17 @@
 	import { RegisterHTMLHandler } from 'mathjax-full/js/handlers/html';
 	import type { OptionList } from 'mathjax-full/js/util/Options';
 
-	export let convertOptions: OptionList = {};
-	// TeX Input
-	export let tex: string;
-	// TeX Input Processor Options https://docs.mathjax.org/en/latest/options/input/tex.html#tex-input-processor-options
-	export let texOptions: OptionList = {};
-	// SVG Output Processor Options, https://docs.mathjax.org/en/latest/options/output/svg.html#svg-options
-	export let svgOptions: OptionList = {};
+	interface Props {
+		// TeX Input
+		tex: string;
+		// TeX Input Processor Options https://docs.mathjax.org/en/latest/options/input/tex.html#tex-input-processor-options
+		texOptions?: OptionList;
+		// SVG Output Processor Options, https://docs.mathjax.org/en/latest/options/output/svg.html#svg-options
+		svgOptions?: OptionList;
+		convertOptions?: OptionList;
+	}
+
+	const { tex, texOptions, svgOptions, convertOptions }: Props = $props();
 
 	const adaptor = liteAdaptor();
 	RegisterHTMLHandler(adaptor);

@@ -1,8 +1,12 @@
 <script lang="ts">
 	import temml, { type Options } from 'temml';
 
-	export let tex: string;
-	export let temmlOptions: Options = {};
+	interface Props {
+		tex: string;
+		temmlOptions?: Options;
+	}
+
+	const { tex, temmlOptions }: Props = $props();
 </script>
 
 {@html temml.renderToString(tex, temmlOptions)}

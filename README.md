@@ -6,6 +6,8 @@ Svelte Component to convert [TeX](https://en.wikipedia.org/wiki/TeX) to rendered
 
 [Try It Online](https://ntsd.github.io/svelte-tex)
 
+*Svelte 5 Ready*
+
 ## Features
 
 - Convert TeX to SVG using [MathJax](https://github.com/mathjax/MathJax)

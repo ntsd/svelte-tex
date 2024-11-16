@@ -1,73 +1,78 @@
 {
-  "name": "svelte-tex",
-  "version": "1.0.5",
-  "description": "Svelte Component to convert TeX to rendered SVG using MathJax or rendered MathML using Temml",
-  "author": "Jirawat Boonkumnerd <contact@ntsd.dev> (https://ntsd.dev)",
-  "license": "MIT",
-  "scripts": {
-    "dev": "vite dev",
-    "build": "svelte-kit sync && svelte-package -o package",
-    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "lint": "prettier --plugin-search-dir . --check . && eslint .",
-    "format": "prettier --plugin-search-dir . --write .",
-    "build-page": "vite build"
-  },
-  "keywords": [
-    "mathml",
-    "svelte",
-    "tex",
-    "math",
-    "svg"
-  ],
-  "type": "module",
-  "files": [
-    "package"
-  ],
-  "main": "./package/index.js",
-  "exports": {
-    "./package.json": "./package.json",
-    "./package/MathML.svelte": {
-      "types": "./package/MathML.svelte.d.ts",
-      "svelte": "./package/MathML.svelte",
-      "require": "./package/MathML.svelte",
-      "import": "./package/MathML.svelte",
-      "default": "./package/MathML.svelte"
-    },
-    "./package/MathSVG.svelte": {
-      "types": "./package/MathSVG.svelte.d.ts",
-      "svelte": "./package/MathSVG.svelte",
-      "require": "./package/MathSVG.svelte",
-      "import": "./package/MathSVG.svelte",
-      "default": "./package/MathSVG.svelte"
-    }
-  },
-  "devDependencies": {
-    "@sveltejs/adapter-static": "^2.0.3",
-    "@sveltejs/kit": "^1.0.0-next.587",
-    "@sveltejs/package": "^2.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.45.0",
-    "@typescript-eslint/parser": "^5.45.0",
-    "autoprefixer": "^10.4.14",
-    "eslint": "^8.28.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-svelte3": "^4.0.0",
-    "postcss": "^8.4.27",
-    "prettier": "^2.8.0",
-    "prettier-plugin-svelte": "^2.8.1",
-    "svelte-check": "^2.9.2",
-    "svelte-highlight": "^7.3.0",
-    "sveltekit-html-minifier": "^1.0.2",
-    "tailwindcss": "^3.3.3",
-    "tslib": "^2.4.1",
-    "typescript": "^4.9.3",
-    "vite": "^4.0.0"
-  },
-  "dependencies": {
-    "mathjax-full": "^3.2.2",
-    "temml": "^0.10.15"
-  },
-  "peerDependencies": {
-    "svelte": "^3.x || ^4.x"
-  }
+	"name": "svelte-tex",
+	"version": "1.0.6",
+	"description": "Svelte Component to convert TeX to rendered SVG using MathJax or rendered MathML using Temml",
+	"author": "Jirawat Boonkumnerd <contact@ntsd.dev> (https://ntsd.dev)",
+	"license": "MIT",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "svelte-kit sync && svelte-package -o package",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"format": "prettier --plugin-search-dir . --write .",
+		"build-page": "vite build"
+	},
+	"keywords": [
+		"mathml",
+		"svelte",
+		"tex",
+		"math",
+		"svg"
+	],
+	"type": "module",
+	"files": [
+		"package"
+	],
+	"main": "./package/index.js",
+	"exports": {
+		"./package.json": "./package.json",
+		"./package/MathML.svelte": {
+			"types": "./package/MathML.svelte.d.ts",
+			"svelte": "./package/MathML.svelte",
+			"require": "./package/MathML.svelte",
+			"import": "./package/MathML.svelte",
+			"default": "./package/MathML.svelte"
+		},
+		"./package/MathSVG.svelte": {
+			"types": "./package/MathSVG.svelte.d.ts",
+			"svelte": "./package/MathSVG.svelte",
+			"require": "./package/MathSVG.svelte",
+			"import": "./package/MathSVG.svelte",
+			"default": "./package/MathSVG.svelte"
+		}
+	},
+	"devDependencies": {
+		"postcss": "^8.4.27",
+		"svelte-highlight": "^7.3.0",
+		"sveltekit-html-minifier": "^1.0.2",
+		"tslib": "^2.4.1",
+		"@sveltejs/adapter-static": "^3.0.0",
+		"@sveltejs/kit": "^2.0.0",
+		"@sveltejs/package": "^2.0.0",
+		"@sveltejs/vite-plugin-svelte": "^4.0.0",
+		"@types/eslint": "^9.6.0",
+		"autoprefixer": "^10.4.20",
+		"eslint": "^9.7.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-svelte": "^2.36.0",
+		"globals": "^15.0.0",
+		"prettier": "^3.3.2",
+		"prettier-plugin-svelte": "^3.2.6",
+		"prettier-plugin-tailwindcss": "^0.6.5",
+		"publint": "^0.2.0",
+		"svelte": "^5.0.0",
+		"svelte-check": "^4.0.0",
+		"tailwindcss": "^3.4.9",
+		"typescript": "^5.0.0",
+		"typescript-eslint": "^8.0.0",
+		"vite": "^5.0.11"
+	},
+	"dependencies": {
+		"mathjax-full": "^3.2.2",
+		"temml": "^0.10.15"
+	},
+	"peerDependencies": {
+		"svelte": "^3.x || ^4.x"
+	}
 }

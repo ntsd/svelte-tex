@@ -2,11 +2,11 @@
 	import Highlight from 'svelte-highlight';
 	import typescript from 'svelte-highlight/languages/typescript';
 	import 'svelte-highlight/styles/github.css';
-	import { npmLink } from '../const';
+	import { npmLink } from '../const.ts';
 	import TryItOnline from './TryItOnline.svelte';
 
 	let copied = false;
-	let copiedTimeout: NodeJS.Timeout;
+	let copiedTimeout: number;
 
 	const installCode = 'npm install svelte-tex';
 	const exmapleCode = `\<script lang="ts">
@@ -49,7 +49,7 @@
 
 <TryItOnline />
 
-<h2 class="text-2xl font-bold mt-8 mb-4">Features</h2>
+<h2 class="mb-4 mt-8 text-2xl font-bold">Features</h2>
 
 <ul class="list-disc pl-6">
 	<li>Convert TeX to SVG using MathJax</li>
@@ -58,30 +58,32 @@
 	<li>Support Temml options</li>
 </ul>
 
-<h2 class="text-2xl font-bold mt-8 mb-4">Installation</h2>
+<h2 class="mb-4 mt-8 text-2xl font-bold">Installation</h2>
 
-<code
+<button
 	class="cursor-pointer select-all rounded px-4 py-2 ring-2"
-	on:mousedown={(e) => {
+	onclick={(e) => {
 		navigator.clipboard.writeText(e.currentTarget.innerText);
 		copied = true;
 		if (copiedTimeout !== undefined) clearTimeout(copiedTimeout);
 		copiedTimeout = setTimeout(() => (copied = false), 2000);
 	}}
 >
-	{installCode}
-</code>
+	<code>
+		{installCode}
+	</code>
+</button>
 
 <p class="opacity-0 transition" class:opacity-100={copied}>copied to clipboard</p>
 
-<h2 class="text-2xl font-bold mb-4">Usage</h2>
+<h2 class="mb-4 text-2xl font-bold">Usage</h2>
 
-<p class="" >MathML is more recommended since MathSVG bundle size is not small.</p>
+<p class="">MathML is more recommended since MathSVG bundle size is not small.</p>
 
-<h3 class="text-2xl font-bold mt-4 mb-2">MathML</h3>
+<h3 class="mb-2 mt-4 text-2xl font-bold">MathML</h3>
 
 <Highlight class="select-all rounded ring-2" language={typescript} code={exmapleCode} />
 
-<h3 class="text-2xl font-bold mt-4 mb-2">MathSVG</h3>
+<h3 class="mb-2 mt-4 text-2xl font-bold">MathSVG</h3>
 
 <Highlight class="select-all rounded ring-2" language={typescript} code={exmapleCode2} />
