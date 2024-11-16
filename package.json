@@ -1,6 +1,6 @@
 {
 	"name": "svelte-tex",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "Svelte Component to convert TeX to rendered SVG using MathJax or rendered MathML using Temml",
 	"author": "Jirawat Boonkumnerd <contact@ntsd.dev> (https://ntsd.dev)",
 	"license": "MIT",
@@ -45,7 +45,7 @@
 	"devDependencies": {
 		"postcss": "^8.4.27",
 		"svelte-highlight": "^7.3.0",
-		"sveltekit-html-minifier": "^1.0.2",
+		"sveltekit-html-minifier": "^1.0.4",
 		"tslib": "^2.4.1",
 		"@sveltejs/adapter-static": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
