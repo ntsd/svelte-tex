@@ -3,6 +3,8 @@
 	import Footer from '../components/Footer.svelte';
 	import Navbar from '../components/Navbar.svelte';
 	import { pageDescription, pageTitle } from '../const.ts';
+
+	let { children } = $props();
 </script>
 
 <svelte:head>
@@ -17,7 +19,7 @@
 <div class="flex h-screen flex-col">
 	<Navbar />
 	<div class="container mx-auto flex-grow justify-items-center">
-		<slot />
+		{@render children()}
 	</div>
 	<Footer />
 </div>
