@@ -10,6 +10,17 @@ const config = {
 	compilerOptions: {
 		runes: true
 	},
+	vitePlugin: {
+		inspector: true,
+		// Handle third-party Svelte components that don't support runes
+		dynamicCompileOptions({ filename }) {
+			if (filename?.includes('node_modules/svelte-highlight')) {
+				return {
+					runes: false
+				};
+			}
+		}
+	},
 	kit: {
 		adapter: htmlMinifierAdapter(adapter())
 	}

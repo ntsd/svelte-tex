@@ -1,5 +1,7 @@
 <script lang="ts">
-	import CodeBlock from './CodeBlock.svelte';
+	import Highlight from 'svelte-highlight';
+	import typescript from 'svelte-highlight/languages/typescript';
+	import 'svelte-highlight/styles/github.css';
 	import { npmLink } from '../const.ts';
 	import TryItOnline from './TryItOnline.svelte';
 
@@ -114,15 +116,15 @@
 <h3 class="mb-2 mt-6 text-2xl font-bold">MathML</h3>
 
 <h4 class="mb-2 text-lg font-medium">Svelte 5</h4>
-<CodeBlock class="select-all ring-2" code={exmapleCode} />
+<Highlight class="select-all rounded ring-2" language={typescript} code={exmapleCode} />
 
 <h4 class="mb-2 mt-4 text-lg font-medium">Svelte 4</h4>
-<CodeBlock class="select-all ring-2" code={exmapleCodeV4} />
+<Highlight class="select-all rounded ring-2" language={typescript} code={exmapleCodeV4} />
 
 <h3 class="mb-2 mt-6 text-2xl font-bold">MathSVG</h3>
 
 <h4 class="mb-2 text-lg font-medium">Svelte 5</h4>
-<CodeBlock class="select-all ring-2" code={exmapleCode2} />
+<Highlight class="select-all rounded ring-2" language={typescript} code={exmapleCode2} />
 
 <h4 class="mb-2 mt-4 text-lg font-medium">Svelte 4</h4>
-<CodeBlock class="select-all ring-2" code={exmapleCode2V4} />
+<Highlight class="select-all rounded ring-2" language={typescript} code={exmapleCode2V4} />
