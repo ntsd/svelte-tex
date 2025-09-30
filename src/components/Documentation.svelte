@@ -1,37 +1,59 @@
 <script lang="ts">
-	import Highlight from 'svelte-highlight';
-	import typescript from 'svelte-highlight/languages/typescript';
-	import 'svelte-highlight/styles/github.css';
+	import CodeBlock from './CodeBlock.svelte';
 	import { npmLink } from '../const.ts';
 	import TryItOnline from './TryItOnline.svelte';
 
-	let copied = false;
+	let copied = $state(false);
 	let copiedTimeout: number;
 
 	const installCode = 'npm install svelte-tex';
-	const exmapleCode = `\<script lang="ts">
+	const exmapleCode = `<!-- Svelte 5 (Runes) -->
+\<script lang="ts">
   import MathML from 'svelte-tex/package/MathML.svelte';
 
   const tex = String.raw\`\\frac{(n^2+n)(2n+1)}{6}\`;
 \<\/script>
 
 <MathML {tex} />
-// or include Temml options
-<MathML {tex} temmlOptions={{}} />
-`;
+<!-- or include Temml options -->
+<MathML {tex} temmlOptions={{}} />`;
 
-	const exmapleCode2 = `\<script lang="ts">
+	const exmapleCodeV4 = `<!-- Svelte 4 (Export Let) -->
+\<script lang="ts">
+  import MathML from 'svelte-tex/package/v4/MathML.svelte';
+
+  const tex = String.raw\`\\frac{(n^2+n)(2n+1)}{6}\`;
+\<\/script>
+
+<MathML {tex} />
+<!-- or include Temml options -->
+<MathML {tex} temmlOptions={{}} />`;
+
+	const exmapleCode2 = `<!-- Svelte 5 (Runes) -->
+\<script lang="ts">
   import MathSVG from 'svelte-tex/package/MathSVG.svelte';
 
   const tex = String.raw\`\\frac{(n^2+n)(2n+1)}{6}\`;
 \<\/script>
 
 <MathSVG {tex} />
-// or include MathJax options
-// texOptions from https://docs.mathjax.org/en/latest/options/input/tex.html#tex-input-processor-options
-// svgOptions from https://docs.mathjax.org/en/latest/options/output/svg.html#svg-options
-<MathSVG {tex} texOptions={{}} svgOptions={{ fontCache: 'local' }} />
-`;
+<!-- or include MathJax options -->
+<!-- texOptions: https://docs.mathjax.org/en/latest/options/input/tex.html -->
+<!-- svgOptions: https://docs.mathjax.org/en/latest/options/output/svg.html -->
+<MathSVG {tex} texOptions={{}} svgOptions={{ fontCache: 'local' }} />`;
+
+	const exmapleCode2V4 = `<!-- Svelte 4 (Export Let) -->
+\<script lang="ts">
+  import MathSVG from 'svelte-tex/package/v4/MathSVG.svelte';
+
+  const tex = String.raw\`\\frac{(n^2+n)(2n+1)}{6}\`;
+\<\/script>
+
+<MathSVG {tex} />
+<!-- or include MathJax options -->
+<!-- texOptions: https://docs.mathjax.org/en/latest/options/input/tex.html -->
+<!-- svgOptions: https://docs.mathjax.org/en/latest/options/output/svg.html -->
+<MathSVG {tex} texOptions={{}} svgOptions={{ fontCache: 'local' }} />`;
 </script>
 
 <h1 class="text-4xl font-bold">Svelte TeX</h1>
@@ -52,6 +74,7 @@
 <h2 class="mb-4 mt-8 text-2xl font-bold">Features</h2>
 
 <ul class="list-disc pl-6">
+	<li>✨ Compatible with both Svelte 4 and Svelte 5</li>
 	<li>Convert TeX to SVG using MathJax</li>
 	<li>Convert TeX to MathML using Temml</li>
 	<li>Support MathJax options</li>
@@ -78,12 +101,28 @@
 
 <h2 class="mb-4 text-2xl font-bold">Usage</h2>
 
-<p class="">MathML is more recommended since MathSVG bundle size is not small.</p>
+<p class="mb-4">MathML is more recommended since MathSVG bundle size is not small.</p>
 
-<h3 class="mb-2 mt-4 text-2xl font-bold">MathML</h3>
+<div class="mb-4 rounded bg-blue-50 p-4">
+	<h4 class="mb-2 text-lg font-semibold">📖 Compatibility</h4>
+	<ul class="text-sm">
+		<li><strong>Svelte 5:</strong> Use components from <code>svelte-tex/package</code> (Runes)</li>
+		<li><strong>Svelte 4:</strong> Use components from <code>svelte-tex/package/v4</code> (Export Let)</li>
+	</ul>
+</div>
 
-<Highlight class="select-all rounded ring-2" language={typescript} code={exmapleCode} />
+<h3 class="mb-2 mt-6 text-2xl font-bold">MathML</h3>
 
-<h3 class="mb-2 mt-4 text-2xl font-bold">MathSVG</h3>
+<h4 class="mb-2 text-lg font-medium">Svelte 5</h4>
+<CodeBlock class="select-all ring-2" code={exmapleCode} />
 
-<Highlight class="select-all rounded ring-2" language={typescript} code={exmapleCode2} />
+<h4 class="mb-2 mt-4 text-lg font-medium">Svelte 4</h4>
+<CodeBlock class="select-all ring-2" code={exmapleCodeV4} />
+
+<h3 class="mb-2 mt-6 text-2xl font-bold">MathSVG</h3>
+
+<h4 class="mb-2 text-lg font-medium">Svelte 5</h4>
+<CodeBlock class="select-all ring-2" code={exmapleCode2} />
+
+<h4 class="mb-2 mt-4 text-lg font-medium">Svelte 4</h4>
+<CodeBlock class="select-all ring-2" code={exmapleCode2V4} />
