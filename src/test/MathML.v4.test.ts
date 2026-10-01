@@ -11,20 +11,23 @@ describe('MathML (Svelte 4)', () => {
 	});
 
 	it('renders quadratic formula correctly', () => {
-		const tex = 'x = \\\\frac{-b \\\\pm \\\\sqrt{b^2 - 4ac}}{2a}';
+		const tex = 'x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}';
 		const { container } = render(MathML, { props: { tex } });
 		const mathElement = container.querySelector('math');
 		expect(mathElement).not.toBeNull();
 		expect(mathElement?.isConnected).toBe(true);
+		expect(mathElement?.querySelector('mfrac')).not.toBeNull();
+		expect(mathElement?.querySelector('msqrt')).not.toBeNull();
 		expect(mathElement?.textContent).toContain('x');
 	});
 
 	it('handles complex expressions', () => {
-		const tex = '\\\\sum_{i=1}^{n} x_i = x_1 + x_2 + \\\\cdots + x_n';
+		const tex = '\\sum_{i=1}^{n} x_i = x_1 + x_2 + \\cdots + x_n';
 		const { container } = render(MathML, { props: { tex } });
 		const mathElement = container.querySelector('math');
 		expect(mathElement).not.toBeNull();
 		expect(mathElement?.isConnected).toBe(true);
+		expect(mathElement?.querySelector('msubsup')).not.toBeNull();
 	});
 
 	it('accepts temml options', () => {
@@ -44,7 +47,7 @@ describe('MathML (Svelte 4)', () => {
 	});
 
 	it('handles special characters', () => {
-		const tex = '\\\\alpha + \\\\beta = \\\\gamma';
+		const tex = '\\alpha + \\beta = \\gamma';
 		const { container } = render(MathML, { props: { tex } });
 		const mathElement = container.querySelector('math');
 		expect(mathElement).not.toBeNull();

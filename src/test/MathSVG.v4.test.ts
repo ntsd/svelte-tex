@@ -11,7 +11,7 @@ describe('MathSVG (Svelte 4)', () => {
 	});
 
 	it('renders quadratic formula as SVG', () => {
-		const tex = '\\\\frac{-b \\\\pm \\\\sqrt{b^2 - 4ac}}{2a}';
+		const tex = '\\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}';
 		const { container } = render(MathSVG, { props: { tex } });
 		const svgElement = container.querySelector('svg');
 		expect(svgElement).not.toBeNull();
@@ -19,7 +19,7 @@ describe('MathSVG (Svelte 4)', () => {
 	});
 
 	it('handles complex expressions with summation', () => {
-		const tex = '\\\\sum_{i=1}^{n} x_i = x_1 + x_2 + \\\\cdots + x_n';
+		const tex = '\\sum_{i=1}^{n} x_i = x_1 + x_2 + \\cdots + x_n';
 		const { container } = render(MathSVG, { props: { tex } });
 		const svgElement = container.querySelector('svg');
 		expect(svgElement).not.toBeNull();
@@ -52,7 +52,7 @@ describe('MathSVG (Svelte 4)', () => {
 	});
 
 	it('handles Greek letters', () => {
-		const tex = '\\\\alpha + \\\\beta = \\\\gamma';
+		const tex = '\\alpha + \\beta = \\gamma';
 		const { container } = render(MathSVG, { props: { tex } });
 		const svgElement = container.querySelector('svg');
 		expect(svgElement).not.toBeNull();
