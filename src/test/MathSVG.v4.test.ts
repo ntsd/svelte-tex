@@ -6,7 +6,7 @@ describe('MathSVG (Svelte 4)', () => {
 	it('renders basic TeX expression as SVG', () => {
 		render(MathSVG, { props: { tex: 'x = 1' } });
 		const svgElement = screen.getByText((content: any, element: any) => {
-			return element?.tagName === 'SVG' || element?.querySelector('svg');
+			return typeof element?.tagName === 'string' && element.tagName.toLowerCase() === 'svg';
 		});
 		expect(svgElement).toBeInTheDocument();
 	});
@@ -15,7 +15,7 @@ describe('MathSVG (Svelte 4)', () => {
 		const tex = 'x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}';
 		render(MathSVG, { props: { tex } });
 		const svgElement = screen.getByText((content: any, element: any) => {
-			return element?.tagName === 'SVG' || element?.querySelector('svg');
+			return typeof element?.tagName === 'string' && element.tagName.toLowerCase() === 'svg';
 		});
 		expect(svgElement).toBeInTheDocument();
 	});
@@ -24,7 +24,7 @@ describe('MathSVG (Svelte 4)', () => {
 		const tex = '\\sum_{i=1}^{n} x_i = x_1 + x_2 + \\cdots + x_n';
 		render(MathSVG, { props: { tex } });
 		const svgElement = screen.getByText((content: any, element: any) => {
-			return element?.tagName === 'SVG' || element?.querySelector('svg');
+			return typeof element?.tagName === 'string' && element.tagName.toLowerCase() === 'svg';
 		});
 		expect(svgElement).toBeInTheDocument();
 	});
@@ -34,7 +34,7 @@ describe('MathSVG (Svelte 4)', () => {
 		const texOptions = { packages: ['base'] };
 		render(MathSVG, { props: { tex, texOptions } });
 		const svgElement = screen.getByText((content: any, element: any) => {
-			return element?.tagName === 'SVG' || element?.querySelector('svg');
+			return typeof element?.tagName === 'string' && element.tagName.toLowerCase() === 'svg';
 		});
 		expect(svgElement).toBeInTheDocument();
 	});
@@ -44,7 +44,7 @@ describe('MathSVG (Svelte 4)', () => {
 		const svgOptions = { fontCache: 'none' };
 		render(MathSVG, { props: { tex, svgOptions } });
 		const svgElement = screen.getByText((content: any, element: any) => {
-			return element?.tagName === 'SVG' || element?.querySelector('svg');
+			return typeof element?.tagName === 'string' && element.tagName.toLowerCase() === 'svg';
 		});
 		expect(svgElement).toBeInTheDocument();
 	});
@@ -52,7 +52,7 @@ describe('MathSVG (Svelte 4)', () => {
 	it('handles empty tex input', () => {
 		render(MathSVG, { props: { tex: '' } });
 		const svgElement = screen.getByText((content: any, element: any) => {
-			return element?.tagName === 'SVG' || element?.querySelector('svg');
+			return typeof element?.tagName === 'string' && element.tagName.toLowerCase() === 'svg';
 		});
 		expect(svgElement).toBeInTheDocument();
 	});
@@ -61,7 +61,7 @@ describe('MathSVG (Svelte 4)', () => {
 		const tex = '\\alpha + \\beta = \\gamma';
 		render(MathSVG, { props: { tex } });
 		const svgElement = screen.getByText((content: any, element: any) => {
-			return element?.tagName === 'SVG' || element?.querySelector('svg');
+			return typeof element?.tagName === 'string' && element.tagName.toLowerCase() === 'svg';
 		});
 		expect(svgElement).toBeInTheDocument();
 	});
