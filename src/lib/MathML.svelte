@@ -18,10 +18,11 @@
 		try {
 			return temml.renderToString(tex, temmlOptions);
 		} catch (error) {
+			const name = error instanceof Error && error.name ? error.name : 'Error';
 			const message = error instanceof Error ? error.message : String(error);
 			const escaped = message.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 			const input = tex.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-			return `<span class="temml-error" style="color:#b22222;white-space:pre-line;">${input}\nParseError: ${escaped}</span>`;
+			return `<span class="temml-error" style="color:#b22222;white-space:pre-line;">${input}\n${name}: ${escaped}</span>`;
 		}
 	});
 </script>
