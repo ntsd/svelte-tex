@@ -60,13 +60,16 @@ describe('MathSVG (Svelte 5)', () => {
 	});
 
 	it('works with reactive updates', async () => {
+		// Glyph unicode codepoints: x = 1D465, y = 1D466
 		const { container, rerender } = render(MathSVG, { props: { tex: 'x = 1' } });
 
-		// Update the prop (Svelte 5: use rerender, not $set)
+		expect(container.querySelector('use[data-c="1D465"]')).not.toBeNull(); // x present
+		expect(container.querySelector('use[data-c="1D466"]')).toBeNull(); // no y yet
+
+		// Update the prop reactively on the mounted instance (Svelte 5: rerender, not $set)
 		await rerender({ tex: 'y = 2x + 1' });
 
-		const svgElement = container.querySelector('svg');
-		expect(svgElement).not.toBeNull();
-		expect(svgElement?.isConnected).toBe(true);
+		expect(container.querySelector('use[data-c="1D466"]')).not.toBeNull(); // y appeared
+		expect(container.querySelector('use[data-c="1D465"]')).not.toBeNull(); // x still there
 	});
 });

@@ -6,6 +6,8 @@ describe('MathML (Svelte 4)', () => {
 	it('renders basic TeX expression', () => {
 		const { container } = render(MathML, { props: { tex: 'x = 1' } });
 		const mathElement = container.querySelector('math');
+		// jsdom keeps the MathML namespace, so <math> is neither an HTMLElement
+		// nor an SVGElement — jest-dom matchers reject it, assert directly.
 		expect(mathElement).not.toBeNull();
 		expect(mathElement?.isConnected).toBe(true);
 	});

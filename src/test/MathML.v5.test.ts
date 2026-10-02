@@ -6,6 +6,8 @@ describe('MathML (Svelte 5)', () => {
 	it('renders basic TeX expression', () => {
 		const { container } = render(MathML, { props: { tex: 'x = 1' } });
 		const mathElement = container.querySelector('math');
+		// jsdom keeps the MathML namespace, so <math> is neither an HTMLElement
+		// nor an SVGElement — jest-dom matchers reject it, assert directly.
 		expect(mathElement).not.toBeNull();
 		expect(mathElement?.isConnected).toBe(true);
 	});
@@ -57,12 +59,20 @@ describe('MathML (Svelte 5)', () => {
 	it('works with reactive updates', async () => {
 		const { container, rerender } = render(MathML, { props: { tex: 'x = 1' } });
 
-		// Update the prop (Svelte 5: use rerender, not $set)
-		await rerender({ tex: 'y = 2' });
-
 		const mathElement = container.querySelector('math');
 		expect(mathElement).not.toBeNull();
 		expect(mathElement?.isConnected).toBe(true);
+		expect(mathElement?.textContent).toContain('x');
+		expect(mathElement?.textContent).not.toContain('y');
+
+		// Update the prop reactively on the mounted instance
+		await rerender({ tex: 'y = 2' });
+
+		const updatedMathElement = container.querySelector('math');
+		expect(updatedMathElement).not.toBeNull();
+		expect(updatedMathElement?.isConnected).toBe(true);
+		expect(updatedMathElement?.textContent).toContain('y');
+		expect(updatedMathElement?.textContent).not.toContain('x');
 	});
 
 	it('does not throw on invalid TeX and shows the error fallback', () => {
