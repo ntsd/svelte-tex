@@ -5,44 +5,58 @@ import MathSVG from '../lib/v4/MathSVG.svelte';
 describe('MathSVG (Svelte 4)', () => {
 	it('renders basic TeX expression as SVG', () => {
 		const { container } = render(MathSVG, { props: { tex: 'x = 1' } });
-		expect(container.querySelector('svg')).toBeInTheDocument();
+		const svgElement = container.querySelector('svg');
+		expect(svgElement).not.toBeNull();
+		expect(svgElement?.isConnected).toBe(true);
 	});
 
 	it('renders quadratic formula as SVG', () => {
-		const tex = 'x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}';
+		const tex = '\\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}';
 		const { container } = render(MathSVG, { props: { tex } });
-		expect(container.querySelector('svg')).toBeInTheDocument();
+		const svgElement = container.querySelector('svg');
+		expect(svgElement).not.toBeNull();
+		expect(svgElement?.isConnected).toBe(true);
 	});
 
 	it('handles complex expressions with summation', () => {
 		const tex = '\\sum_{i=1}^{n} x_i = x_1 + x_2 + \\cdots + x_n';
 		const { container } = render(MathSVG, { props: { tex } });
-		expect(container.querySelector('svg')).toBeInTheDocument();
+		const svgElement = container.querySelector('svg');
+		expect(svgElement).not.toBeNull();
+		expect(svgElement?.isConnected).toBe(true);
 	});
 
 	it('accepts TeX options', () => {
 		const tex = 'x^2';
 		const texOptions = { packages: ['base'] };
 		const { container } = render(MathSVG, { props: { tex, texOptions } });
-		expect(container.querySelector('svg')).toBeInTheDocument();
+		const svgElement = container.querySelector('svg');
+		expect(svgElement).not.toBeNull();
+		expect(svgElement?.isConnected).toBe(true);
 	});
 
 	it('accepts SVG options', () => {
 		const tex = 'y = mx + b';
 		const svgOptions = { fontCache: 'none' };
 		const { container } = render(MathSVG, { props: { tex, svgOptions } });
-		expect(container.querySelector('svg')).toBeInTheDocument();
+		const svgElement = container.querySelector('svg');
+		expect(svgElement).not.toBeNull();
+		expect(svgElement?.isConnected).toBe(true);
 	});
 
 	it('handles empty tex input', () => {
 		const { container } = render(MathSVG, { props: { tex: '' } });
-		expect(container.querySelector('svg')).toBeInTheDocument();
+		const svgElement = container.querySelector('svg');
+		expect(svgElement).not.toBeNull();
+		expect(svgElement?.isConnected).toBe(true);
 	});
 
 	it('handles Greek letters', () => {
 		const tex = '\\alpha + \\beta = \\gamma';
 		const { container } = render(MathSVG, { props: { tex } });
-		expect(container.querySelector('svg')).toBeInTheDocument();
+		const svgElement = container.querySelector('svg');
+		expect(svgElement).not.toBeNull();
+		expect(svgElement?.isConnected).toBe(true);
 	});
 
 	it('does not throw on invalid TeX and shows the error fallback', () => {
@@ -52,10 +66,11 @@ describe('MathSVG (Svelte 4)', () => {
 		const { container } = render(MathSVG, { props: { tex: '\\frac{1}' } });
 
 		// No misleading error SVG is rendered…
-		expect(container.querySelector('svg')).not.toBeInTheDocument();
+		expect(container.querySelector('svg')).toBeNull();
 		// …and a clearly-marked fallback carrying the source + message is.
 		const error = container.querySelector('.mathsvg-error');
-		expect(error).toBeInTheDocument();
+		expect(error).not.toBeNull();
+		expect(error?.isConnected).toBe(true);
 		expect(error?.textContent).toContain('\\frac{1}');
 		expect(error?.textContent).toContain('Missing argument');
 	});
@@ -67,10 +82,10 @@ describe('MathSVG (Svelte 4)', () => {
 		const { container } = render(MathSVG, { props: { tex } });
 
 		const error = container.querySelector('.mathsvg-error');
-		expect(error).toBeInTheDocument();
+		expect(error).not.toBeNull();
 		// Raw text is present but the underlying markup is escaped.
 		expect(error?.textContent).toContain('a < b & c');
 		expect(error?.innerHTML).toContain('a &lt; b &amp; c');
-		expect(container.querySelector('svg')).not.toBeInTheDocument();
+		expect(container.querySelector('svg')).toBeNull();
 	});
 });
