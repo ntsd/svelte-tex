@@ -18,6 +18,10 @@ export default defineConfig({
 		environment: 'jsdom',
 		setupFiles: ['./src/test/setup.ts']
 	},
+	// Resolve Svelte's browser (client) build in tests so `mount`/`render` are available.
+	resolve: {
+		conditions: ['browser']
+	},
 	optimizeDeps: {
 		include: ['@testing-library/svelte'],
 		exclude: ['svelte']
