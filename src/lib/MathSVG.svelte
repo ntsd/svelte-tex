@@ -48,6 +48,7 @@
 	});
 
 	function getMathjaxSVG(tex: string): string {
+		// read to register the reactive dependency for the template
 		optionsGeneration;
 		const node = mathjaxSVGDocument.convert(tex, convertOptions);
 		return adaptor.innerHTML(node);
