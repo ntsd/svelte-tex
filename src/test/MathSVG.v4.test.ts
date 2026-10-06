@@ -88,4 +88,16 @@ describe('MathSVG (Svelte 4)', () => {
 		expect(error?.innerHTML).toContain('a &lt; b &amp; c');
 		expect(container.querySelector('svg')).toBeNull();
 	});
+
+	it('rebuilds the MathJax document when svgOptions change', async () => {
+		const { container, rerender } = render(MathSVG, {
+			props: { tex: 'x = 1', svgOptions: { fontCache: 'local' } }
+		});
+		// fontCache 'local' inlines a shared <defs> of <path> glyphs
+		expect(container.querySelector('defs path')).not.toBeNull();
+
+		// Rerender with a different option value: the output must reflect the new option
+		await rerender({ tex: 'x = 1', svgOptions: { fontCache: 'none' } });
+		expect(container.querySelector('defs path')).toBeNull();
+	});
 });
