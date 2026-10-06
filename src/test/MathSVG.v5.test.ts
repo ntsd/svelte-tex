@@ -72,4 +72,16 @@ describe('MathSVG (Svelte 5)', () => {
 		expect(container.querySelector('use[data-c="1D466"]')).not.toBeNull(); // y appeared
 		expect(container.querySelector('use[data-c="1D465"]')).not.toBeNull(); // x still there
 	});
+
+	it('rebuilds the MathJax document when svgOptions change', async () => {
+		const { container, rerender } = render(MathSVG, {
+			props: { tex: 'x = 1', svgOptions: { fontCache: 'local' } }
+		});
+		// fontCache 'local' inlines a shared <defs> of <path> glyphs
+		expect(container.querySelector('defs path')).not.toBeNull();
+
+		// Rerender with a different option value: the output must reflect the new option
+		await rerender({ tex: 'x = 1', svgOptions: { fontCache: 'none' } });
+		expect(container.querySelector('defs path')).toBeNull();
+	});
 });
