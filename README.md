@@ -6,7 +6,7 @@ Svelte Component to convert [TeX](https://en.wikipedia.org/wiki/TeX) to rendered
 
 [Try It Online](https://ntsd.github.io/svelte-tex)
 
-*Supports both Svelte 4 and Svelte 5*
+_Supports both Svelte 4 and Svelte 5_
 
 ## Compatibility
 

@@ -2,6 +2,6 @@
 	import Documentation from '../components/Documentation.svelte';
 </script>
 
-<main class="flex max-w-full flex-col py-16 px-4">
+<main class="flex max-w-full flex-col px-4 py-16">
 	<Documentation />
 </main>
