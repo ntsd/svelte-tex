@@ -73,6 +73,36 @@ describe('MathSVG (Svelte 5)', () => {
 		expect(container.querySelector('use[data-c="1D465"]')).not.toBeNull(); // x still there
 	});
 
+	it('does not throw on invalid TeX and shows the error fallback', () => {
+		// Unclosed \frac: mathjax-full reports this via a `data-mjx-error`
+		// marker node. The component must surface a graceful fallback instead
+		// of letting the error SVG (or any thrown error) crash the tree.
+		const { container } = render(MathSVG, { props: { tex: '\\frac{1}' } });
+
+		// No misleading error SVG is rendered…
+		expect(container.querySelector('svg')).toBeNull();
+		// …and a clearly-marked fallback carrying the source + message is.
+		const error = container.querySelector('.mathsvg-error');
+		expect(error).not.toBeNull();
+		expect(error?.isConnected).toBe(true);
+		expect(error?.textContent).toContain('\\frac{1}');
+		expect(error?.textContent).toContain('Missing argument');
+	});
+
+	it('escapes special characters in the error fallback', () => {
+		// Invalid TeX (missing \frac arg) containing markup-significant
+		// characters: they must be HTML-escaped, not injected raw.
+		const tex = 'a < b & c \\frac{1}';
+		const { container } = render(MathSVG, { props: { tex } });
+
+		const error = container.querySelector('.mathsvg-error');
+		expect(error).not.toBeNull();
+		// Raw text is present but the underlying markup is escaped.
+		expect(error?.textContent).toContain('a < b & c');
+		expect(error?.innerHTML).toContain('a &lt; b &amp; c');
+		expect(container.querySelector('svg')).toBeNull();
+	});
+
 	it('rebuilds the MathJax document when svgOptions change', async () => {
 		const { container, rerender } = render(MathSVG, {
 			props: { tex: 'x = 1', svgOptions: { fontCache: 'local' } }
