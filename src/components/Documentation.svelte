@@ -109,7 +109,9 @@
 	<h4 class="mb-2 text-lg font-semibold">📖 Compatibility</h4>
 	<ul class="text-sm">
 		<li><strong>Svelte 5:</strong> Use components from <code>svelte-tex/package</code> (Runes)</li>
-		<li><strong>Svelte 4:</strong> Use components from <code>svelte-tex/package/v4</code> (Export Let)</li>
+		<li>
+			<strong>Svelte 4:</strong> Use components from <code>svelte-tex/package/v4</code> (Export Let)
+		</li>
 	</ul>
 </div>
 

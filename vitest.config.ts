@@ -1,6 +1,7 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { svelteTesting } from '@testing-library/svelte/vite';
 
 export default defineConfig({
 	resolve: {
@@ -14,7 +15,8 @@ export default defineConfig({
 				// Dynamically decide runes based on file path
 				runes: undefined // Let each file decide based on its content
 			}
-		})
+		}),
+		svelteTesting()
 	],
 	test: {
 		globals: true,
